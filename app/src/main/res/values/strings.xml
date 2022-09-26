@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">rockpaperscissor-gui</string>
+    <string name="kertas_desc">hand paper image</string>
+    <string name="batu_desc">hand rock image</string>
+    <string name="gunting_desc">hand scissor image</string>
+    <string name="player1_title">PeMaIN 1</string>
+    <string name="computer_title">COM</string>
+    <string name="refresh_button">Refresh button</string>
+    <string name="versus">VS</string>
+    <string name="text_you_won">YOU WON!</string>
+    <string name="text_computer_won">COMPUTER \n WON!</string>
+    <string name="text_draw">DRAW</string>
+</resources>

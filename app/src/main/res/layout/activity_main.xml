@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="30dp">
+
+
+    <TextView
+        android:id="@+id/tv_app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="kertas \n Gunting \n Batu"
+        android:textAllCaps="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/zeusland"
+        android:textAlignment="center"
+        android:textSize="45sp"
+        android:letterSpacing="0.1"
+        android:textStyle="normal"
+        android:textColor="@color/orange"/>
+
+    <LinearLayout
+        android:id="@+id/player_left"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_app_title"
+        app:layout_constraintBottom_toTopOf="@id/refresh_button"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/player1_title"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/zeusland"
+            android:letterSpacing="0.06"/>
+
+        <FrameLayout
+            android:id="@+id/kertas_button_left"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/img_rounded_background_transparent"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/kertas_desc"
+                android:src="@drawable/ic_kertas" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/gunting_button_left"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/img_rounded_background_transparent"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/gunting_desc"
+                android:src="@drawable/ic_gunting" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/batu_button_left"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/img_rounded_background_transparent"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/batu_desc"
+                android:src="@drawable/ic_batu" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/versus"
+        android:rotation="-10"
+        android:textAlignment="center"
+        android:textSize="45sp"
+        android:fontFamily="@font/zeusland"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="@id/player_left"
+        app:layout_constraintBottom_toBottomOf="@id/player_left"
+        app:layout_constraintEnd_toStartOf="@id/player_right"
+        app:layout_constraintStart_toEndOf="@id/player_left"/>
+
+    <LinearLayout
+        android:id="@+id/player_right"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_app_title"
+        app:layout_constraintBottom_toTopOf="@id/refresh_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/computer_title"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/zeusland"
+            android:letterSpacing="0.05"/>
+
+        <FrameLayout
+            android:id="@+id/kertas_button_right"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/img_rounded_background_transparent"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/kertas_desc"
+                android:src="@drawable/ic_kertas" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/gunting_button_right"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/img_rounded_background_transparent"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/gunting_desc"
+                android:src="@drawable/ic_gunting" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/batu_button_right"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/img_rounded_background_transparent"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/batu_desc"
+                android:src="@drawable/ic_batu" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/refresh_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:layout_marginVertical="16dp">
+
+        <ImageView
+            android:id="@+id/iv_restart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/refresh_button"
+            android:src="@drawable/ic_refresh" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
