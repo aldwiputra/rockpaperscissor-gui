@@ -33,11 +33,6 @@ class GameManager(private val listener: MainActivity) {
     private fun checkWinner(playerOneWeapon: Weapon, playerTwoWeapon: Weapon) {
         val playerOneWeaponNum = transformWeaponIntoNumber(playerOneWeapon)
         val playerTwoWeaponNum = transformWeaponIntoNumber(playerTwoWeapon)
-//      val winner = when (playerOneWeaponNum  - playerTwoWeaponNum) {
-//            1 -> playerOne
-//            0 -> null
-//            else -> playerTwo
-//        }
 
         val winner = if ((playerTwoWeaponNum + 1) % 3 == playerOneWeaponNum) {
             playerOne
@@ -52,11 +47,7 @@ class GameManager(private val listener: MainActivity) {
     }
 
     private fun transformWeaponIntoNumber (weapon: Weapon): Int {
-        return when(weapon) {
-            Weapon.ROCK -> 0
-            Weapon.PAPER -> 1
-            Weapon.SCISSOR -> 2
-        }
+        return weapon.ordinal
     }
 
     fun restartGame() {
