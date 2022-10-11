@@ -1,18 +1,21 @@
-package com.example.rockpaperscissor_gui
+package com.example.rockpaperscissor_gui.ui.game
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.rockpaperscissor_gui.databinding.ActivityMainBinding
+import androidx.appcompat.content.res.AppCompatResources
+import com.example.rockpaperscissor_gui.R
+import com.example.rockpaperscissor_gui.databinding.ActivityGameBinding
 import com.example.rockpaperscissor_gui.enum.GameState
 import com.example.rockpaperscissor_gui.enum.PlayerSide
 import com.example.rockpaperscissor_gui.enum.Weapon
 import com.example.rockpaperscissor_gui.enum.Weapon.*
+import com.example.rockpaperscissor_gui.manager.GameListener
 import com.example.rockpaperscissor_gui.manager.GameManager
 import com.example.rockpaperscissor_gui.user.Player
 
-class MainActivity : AppCompatActivity() {
-    private val binding: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
+class GameActivity : AppCompatActivity(), GameListener {
+    private val binding: ActivityGameBinding by lazy {
+        ActivityGameBinding.inflate(layoutInflater)
     }
 
     private val gameManager: GameManager by lazy {
@@ -27,11 +30,11 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    fun onChoosingOrClearWeapon(playerOneWeapon: Weapon, playerTwoWeapon: Weapon, gameState: GameState) {
+    override fun onChoosingOrClearWeapon(playerOneWeapon: Weapon, playerTwoWeapon: Weapon, gameState: GameState) {
         val color = if (gameState == GameState.STARTED) {
-            getDrawable(R.color.teal_opaque)
+            AppCompatResources.getDrawable(this, R.drawable.img_rounded_background)
         } else {
-            getDrawable(R.color.teal_transparent)
+            AppCompatResources.getDrawable(this, R.drawable.img_rounded_background_transparent)
         }
 
         binding.apply {
@@ -48,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onGameFinished(winner: Player?) {
+    override fun onGameFinished(winner: Player?) {
         when (winner?.playerSide) {
             PlayerSide.PLAYER_ONE -> {
                 binding.tvResult.text = getString(R.string.text_you_won)

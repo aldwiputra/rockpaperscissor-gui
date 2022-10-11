@@ -1,13 +1,13 @@
 package com.example.rockpaperscissor_gui.manager
 
-import com.example.rockpaperscissor_gui.MainActivity
+import com.example.rockpaperscissor_gui.ui.game.GameActivity
 import com.example.rockpaperscissor_gui.enum.GameState
 import com.example.rockpaperscissor_gui.enum.PlayerSide
 import com.example.rockpaperscissor_gui.enum.Weapon
 import com.example.rockpaperscissor_gui.user.Player
 import kotlin.random.Random
 
-class GameManager(private val listener: MainActivity) {
+class GameManager(private val listener: GameListener) {
     private lateinit var playerOne: Player
     private lateinit var playerTwo: Player
     private lateinit var gameState: GameState
@@ -64,4 +64,9 @@ class GameManager(private val listener: MainActivity) {
     private fun setGameState(state: GameState) {
         gameState = state
     }
+}
+
+interface GameListener {
+    fun onChoosingOrClearWeapon(playerOneWeapon: Weapon, playerTwoWeapon: Weapon, gameState: GameState)
+    fun onGameFinished(winner: Player?)
 }
