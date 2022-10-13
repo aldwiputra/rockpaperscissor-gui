@@ -1,31 +1,40 @@
 package com.example.rockpaperscissor_gui.manager
 
-import com.example.rockpaperscissor_gui.ui.game.GameActivity
 import com.example.rockpaperscissor_gui.enum.GameState
 import com.example.rockpaperscissor_gui.enum.PlayerSide
 import com.example.rockpaperscissor_gui.enum.Weapon
 import com.example.rockpaperscissor_gui.user.Player
 import kotlin.random.Random
 
-class GameManager(private val listener: GameListener) {
-    private lateinit var playerOne: Player
-    private lateinit var playerTwo: Player
-    private lateinit var gameState: GameState
+interface RPSGameManager {
+    fun initGame()
+    fun restartGame()
+}
 
-    fun initGame() {
-        gameState = GameState.IDLE
+interface GameListener {
+    fun onChoosingOrClearWeapon(playerOneWeapon: Weapon, playerTwoWeapon: Weapon, gameState: GameState)
+    fun onGameFinished(winner: Player?)
+}
+
+class GameManager(private val listener: GameListener): RPSGameManager {
+    protected lateinit var playerOne: Player
+    protected lateinit var playerTwo: Player
+    protected lateinit var state: GameState
+
+    override fun initGame() {
+        state = GameState.IDLE
         playerOne = Player(PlayerSide.PLAYER_ONE)
         playerTwo = Player(PlayerSide.PLAYER_TWO)
-        gameState = GameState.STARTED
+        state = GameState.STARTED
     }
 
     fun chooseWeaponAndShowResult(weapon: Weapon) {
-        if (gameState !== GameState.FINISHED && gameState !== GameState.IDLE) {
+        if (state !== GameState.FINISHED && state !== GameState.IDLE) {
             playerOne.chosenWeapon = weapon
             val randomNumber = Random.nextInt(0, until = Weapon.values().size)
             playerTwo.chosenWeapon = Weapon.values()[randomNumber]
 
-            listener.onChoosingOrClearWeapon(playerOne.chosenWeapon, playerTwo.chosenWeapon,gameState)
+            listener.onChoosingOrClearWeapon(playerOne.chosenWeapon, playerTwo.chosenWeapon,state)
             checkWinner(playerOne.chosenWeapon, playerTwo.chosenWeapon)
         }
     }
@@ -42,7 +51,7 @@ class GameManager(private val listener: GameListener) {
             null
         }
 
-        gameState = GameState.FINISHED
+        state = GameState.FINISHED
         listener.onGameFinished(winner)
     }
 
@@ -50,23 +59,19 @@ class GameManager(private val listener: GameListener) {
         return weapon.ordinal
     }
 
-    fun restartGame() {
-        if (gameState == GameState.FINISHED) {
+    override fun restartGame() {
+        if (state == GameState.FINISHED) {
             listener.onChoosingOrClearWeapon(
                 playerOne.chosenWeapon,
                 playerTwo.chosenWeapon,
-                gameState
+                state
             )
             initGame()
         }
     }
 
     private fun setGameState(state: GameState) {
-        gameState = state
+        this.state = state
     }
 }
 
-interface GameListener {
-    fun onChoosingOrClearWeapon(playerOneWeapon: Weapon, playerTwoWeapon: Weapon, gameState: GameState)
-    fun onGameFinished(winner: Player?)
-}

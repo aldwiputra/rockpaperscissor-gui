@@ -1,5 +1,7 @@
 package com.example.rockpaperscissor_gui.ui.game
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.content.res.AppCompatResources
@@ -20,6 +22,10 @@ class GameActivity : AppCompatActivity(), GameListener {
 
     private val gameManager: GameManager by lazy {
         GameManager(this)
+    }
+
+    private val isMultiplayerModeOn: Boolean by lazy {
+        intent.getBooleanExtra(EXTRAS_MULTIPLAYER_MODE, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +90,18 @@ class GameActivity : AppCompatActivity(), GameListener {
                 tvResult.setBackgroundColor(getColor(R.color.teal_transparent))
                 tvResult.textSize = 45.toFloat()
             }
+
+
+        }
+    }
+
+    companion object {
+        private const val EXTRAS_MULTIPLAYER_MODE = "EXTRAS_MULTIPLAYER_MODE"
+
+        fun startActivity(context: Context, isMultiplayerModeOn: Boolean) {
+            context.startActivity(Intent(context, GameActivity::class.java).apply {
+                putExtra(EXTRAS_MULTIPLAYER_MODE, isMultiplayerModeOn)
+            })
         }
     }
 }

@@ -10,4 +10,11 @@
     <string name="text_you_won">YOU WON!</string>
     <string name="text_computer_won">COMPUTER \n WON!</string>
     <string name="text_draw">DRAW</string>
+    <string name="text_splash_desc_1">Bermain sulit melawan sesama pemain</string>
+    <string name="text_splash_desc_2">Bermain sulit melawan komputer.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_title_menu">PILIH LAWANMU</string>
+    <string name="text_menu_vs_player">%1$s vs Pemain</string>
+    <string name="text_menu_vs_cpu">%1$s vs CPU</string>
 </resources>

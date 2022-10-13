@@ -33,9 +33,10 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_title_player_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/player1_title"
+            tools:text="@string/player1_title"
             android:layout_marginBottom="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
@@ -120,9 +121,10 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_title_player_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/computer_title"
+            tools:text="@string/computer_title"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
