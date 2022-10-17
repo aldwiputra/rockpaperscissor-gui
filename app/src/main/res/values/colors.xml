@@ -8,6 +8,7 @@
     <color name="teal_opaque">#5503DAC5</color>
     <color name="teal_700">#108378</color>
     <color name="black">#FF000000</color>
+    <color name="black_transparent">#44000000</color>
     <color name="orange">#FF5722</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

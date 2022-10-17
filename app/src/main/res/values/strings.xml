@@ -17,4 +17,12 @@
     <string name="text_title_menu">PILIH LAWANMU</string>
     <string name="text_menu_vs_player">%1$s vs Pemain</string>
     <string name="text_menu_vs_cpu">%1$s vs CPU</string>
+    <string name="text_toast_chosen_weapon">%s Memilih %s</string>
+    <string name="text_player_2">Pemain 2</string>
+    <string name="hasil_permainan">Hasil Permainan</string>
+    <string name="main_lagi">Main Lagi</string>
+    <string name="kembali_ke_menu">Kembali Ke Menu</string>
+    <string name="robot_illustration">Robot Illustration</string>
+    <string name="a_man_and_woman_talk_on_a_bench">A man and woman talk on a bench</string>
+    <string name="logo_game">Logo Game</string>
 </resources>

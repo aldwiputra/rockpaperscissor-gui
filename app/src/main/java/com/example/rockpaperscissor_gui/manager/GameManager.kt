@@ -14,9 +14,11 @@ interface RPSGameManager {
 interface GameListener {
     fun onChoosingOrClearWeapon(playerOneWeapon: Weapon, playerTwoWeapon: Weapon, gameState: GameState)
     fun onGameFinished(winner: Player?)
+    fun showChosenWeapon(weapon: Weapon, playerSide: PlayerSide)
+    fun showAndHideChosenWeapon(weapon: Weapon)
 }
 
-class GameManager(private val listener: GameListener): RPSGameManager {
+open class GameManager(protected val listener: GameListener): RPSGameManager {
     protected lateinit var playerOne: Player
     protected lateinit var playerTwo: Player
     protected lateinit var state: GameState
@@ -28,8 +30,8 @@ class GameManager(private val listener: GameListener): RPSGameManager {
         state = GameState.STARTED
     }
 
-    fun chooseWeaponAndShowResult(weapon: Weapon) {
-        if (state !== GameState.FINISHED && state !== GameState.IDLE) {
+    open fun chooseWeaponAndShowResult(weapon: Weapon, playerSide: PlayerSide) {
+        if (state == GameState.STARTED && playerSide == PlayerSide.PLAYER_ONE) {
             playerOne.chosenWeapon = weapon
             val randomNumber = Random.nextInt(0, until = Weapon.values().size)
             playerTwo.chosenWeapon = Weapon.values()[randomNumber]
@@ -39,7 +41,7 @@ class GameManager(private val listener: GameListener): RPSGameManager {
         }
     }
 
-    private fun checkWinner(playerOneWeapon: Weapon, playerTwoWeapon: Weapon) {
+    protected fun checkWinner(playerOneWeapon: Weapon, playerTwoWeapon: Weapon) {
         val playerOneWeaponNum = transformWeaponIntoNumber(playerOneWeapon)
         val playerTwoWeaponNum = transformWeaponIntoNumber(playerTwoWeapon)
 
@@ -70,8 +72,29 @@ class GameManager(private val listener: GameListener): RPSGameManager {
         }
     }
 
-    private fun setGameState(state: GameState) {
+    protected fun setGameState(state: GameState) {
         this.state = state
+    }
+}
+
+class MultiplayerGameManager(listener: GameListener): GameManager(listener) {
+    override fun initGame() {
+        super.initGame()
+        setGameState(GameState.PLAYER_ONE_TURN)
+    }
+
+    override fun chooseWeaponAndShowResult(weapon: Weapon, playerSide: PlayerSide) {
+        if (state == GameState.PLAYER_ONE_TURN && playerSide == PlayerSide.PLAYER_ONE) {
+            playerOne.chosenWeapon = weapon
+            listener.showAndHideChosenWeapon(weapon)
+            listener.showChosenWeapon(playerOne.chosenWeapon, playerSide)
+            setGameState(GameState.PLAYER_TWO_TURN)
+        } else if (state == GameState.PLAYER_TWO_TURN && playerSide == PlayerSide.PLAYER_TWO) {
+            playerTwo.chosenWeapon = weapon
+            listener.showChosenWeapon(playerTwo.chosenWeapon, playerSide)
+            listener.onChoosingOrClearWeapon(playerOne.chosenWeapon, playerTwo.chosenWeapon,state)
+            checkWinner(playerOne.chosenWeapon, playerTwo.chosenWeapon)
+        }
     }
 }
 

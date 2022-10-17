@@ -1,6 +1,6 @@
 package com.example.rockpaperscissor_gui.ui.menu
 
-import android.content.Context
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rockpaperscissor_gui.R
@@ -26,10 +26,10 @@ class MenuActivity : AppCompatActivity() {
 
     private fun setMenuClickListeners() {
         binding.llVsPlayer.setOnClickListener {
-            GameActivity.startActivity(this, true)
+            GameActivity.startActivity(this, true, extraData)
         }
         binding.llVsCpu.setOnClickListener {
-            GameActivity.startActivity(this, false)
+            GameActivity.startActivity(this, false, extraData)
         }
     }
 

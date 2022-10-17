@@ -4,55 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.game.GameActivity"
-    android:padding="30dp">
+    android:padding="30dp"
+    tools:context=".ui.game.GameActivity">
 
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_app_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="kertas \n Gunting \n Batu"
-        android:textAllCaps="true"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/zeusland"
-        android:textAlignment="center"
-        android:textSize="45sp"
-        android:letterSpacing="0.1"
-        android:textStyle="normal"
-        android:textColor="@color/orange"/>
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_splash_screen1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:contentDescription="@string/logo_game"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_close_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/player_left"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_title"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/refresh_button"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/tv_app_title">
 
         <TextView
             android:id="@+id/tv_title_player_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/player1_title"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/zeusland"
+            android:letterSpacing="0.06"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="@font/zeusland"
-            android:letterSpacing="0.06"/>
+            tools:text="@string/player1_title" />
 
         <FrameLayout
             android:id="@+id/kertas_button_left"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_weight="1"
             android:background="@drawable/img_rounded_background_transparent"
-            >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -65,11 +69,10 @@
             android:id="@+id/gunting_button_left"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_weight="1"
             android:background="@drawable/img_rounded_background_transparent"
-            >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -82,11 +85,10 @@
             android:id="@+id/batu_button_left"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_weight="1"
             android:background="@drawable/img_rounded_background_transparent"
-            >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -100,47 +102,46 @@
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/versus"
-        android:rotation="-10"
-        android:textAlignment="center"
-        android:textSize="45sp"
         android:fontFamily="@font/zeusland"
         android:padding="8dp"
-        app:layout_constraintTop_toTopOf="@id/player_left"
+        android:rotation="-10"
+        android:text="@string/versus"
+        android:textAlignment="center"
+        android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="@id/player_left"
         app:layout_constraintEnd_toStartOf="@id/player_right"
-        app:layout_constraintStart_toEndOf="@id/player_left"/>
+        app:layout_constraintStart_toEndOf="@id/player_left"
+        app:layout_constraintTop_toTopOf="@id/player_left" />
 
     <LinearLayout
         android:id="@+id/player_right"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_app_title"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/refresh_button"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/tv_app_title">
 
         <TextView
             android:id="@+id/tv_title_player_right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="@string/computer_title"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/zeusland"
+            android:letterSpacing="0.05"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/zeusland"
-            android:letterSpacing="0.05"/>
+            tools:text="@string/computer_title" />
 
         <FrameLayout
             android:id="@+id/kertas_button_right"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_weight="1"
             android:background="@drawable/img_rounded_background_transparent"
-            >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -153,11 +154,10 @@
             android:id="@+id/gunting_button_right"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_weight="1"
             android:background="@drawable/img_rounded_background_transparent"
-            >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -170,11 +170,10 @@
             android:id="@+id/batu_button_right"
             android:layout_width="100dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginVertical="16dp"
+            android:layout_weight="1"
             android:background="@drawable/img_rounded_background_transparent"
-            >
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -186,13 +185,13 @@
 
     <FrameLayout
         android:id="@+id/refresh_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginVertical="16dp"
         android:layout_weight="1"
         android:padding="8dp"
-        android:layout_marginVertical="16dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/iv_restart"
