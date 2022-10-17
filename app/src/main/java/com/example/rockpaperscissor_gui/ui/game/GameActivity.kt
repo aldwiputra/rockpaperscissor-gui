@@ -79,19 +79,6 @@ class GameActivity : AppCompatActivity(), GameListener {
 
     override fun onGameFinished(winner: Player?) {
         showDialog(winner)
-//        when (winner?.playerSide) {
-//            PlayerSide.PLAYER_ONE -> {
-//                binding.tvResult.text = getString(R.string.text_you_won)
-//            }
-//            PlayerSide.PLAYER_TWO -> {
-//                binding.tvResult.text = getString(R.string.text_computer_won)
-//            }
-//            null -> {
-//                binding.tvResult.text = getString(R.string.text_draw)
-//            }
-//        }
-//        binding.tvResult.setBackgroundColor(getColor(R.color.orange))
-//        binding.tvResult.textSize = 24.toFloat()
     }
 
     override fun showChosenWeapon(weapon: Weapon, playerSide: PlayerSide) {
